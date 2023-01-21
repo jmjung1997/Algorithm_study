@@ -17,6 +17,20 @@ def bfs(graph, start, visited):
                 queue.append(i)
                 visited[i]=True
 
-graph=[[],[2,3,8],[1,7],[1,4,5],[3,5],[3,4],[7],[2,6,8],[1,7]]
-visited=[False]*9
-bfs(graph,1,visited)
+
+node, link=map(int, input().split()) # 노드수와 연결할 링크 수를 결정한다.
+graph=[[] for _ in range(node+1)] #첫 노드는 0이므로 +1을 하여 초기 설정을 한다.
+for j in range(1,node+1):
+        add=list(map(int,input().split()))
+        graph[j]+=add
+visited=[False]*(node+1) # visited 배열을 False로 초기 설정을 해준다.
+
+count=0 # 그래프 개수 저장
+
+for i in range(1, node+1): # 1번 노드 부터 시작해서 순차적으로 반복해본다.
+    if not visited[i]: # 만약 해당노드가 방문한 적이 없다면
+        bfs(graph, i, visited) # 재귀함수를 호출한다
+        count+=1 #재귀함수를 호출을 한뒤 dfs를 탐색한 후 갯수를 말한다
+
+
+print(count)
