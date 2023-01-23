@@ -1,5 +1,5 @@
 import heapq
-def solution(n, k, enemy):
+def solution(n, k, enemy): ## 솔루션 함수 정의
     heap=[]
     if len(enemy)==k:
         return len(enemy)
